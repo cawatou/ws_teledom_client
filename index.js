@@ -1,4 +1,4 @@
-var ws = io('https://skipodev.ru:8011');
+var ws = io('http://185.22.235.182:8111');
 
 ws.on('candidate', function(data) {
 	console.log(data.ice);
@@ -18,3 +18,12 @@ ws.on('offer', function(sdp) {
 ws.on("answer", function(data){
 	setRemoteSDP(data);	
 })
+
+function init(){
+	var data = {
+		event: 'init',
+		serial_number: '84005035c504382e09ce'
+	};
+	ws.emit('init', data);
+	console.log('init data: ', data);
+}
