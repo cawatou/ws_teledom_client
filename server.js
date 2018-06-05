@@ -10,7 +10,7 @@ server.listen(HTTPS_PORT, '95.183.10.70', function() {
 
 
 io.on('connection', function (client) {
-    console.log('new connection: ' + clien);
+    console.log('new connection: ' + client);
 
     client.on('init', function (data) {
         client.broadcast.emit('init', data);

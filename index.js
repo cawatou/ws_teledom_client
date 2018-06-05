@@ -16,7 +16,7 @@ ws.on('offer', function(sdp) {
 });
 
 ws.on("answer", function(data){
-	setRemoteSDP(data);	
+	console.log(data);	
 })
 
 function init(){
