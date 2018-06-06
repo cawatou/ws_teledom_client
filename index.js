@@ -25,5 +25,13 @@ function init(){
 		serial_number: '84005035c504382e09ce'
 	};
 	ws.emit('init', data);
-	console.log('init data: ', data);
 }
+
+function config(){
+	var data = {
+		event: 'config',
+		serial_number: '84005035c504382e09ce'
+	};
+	ws.emit('config', data);
+}
+
