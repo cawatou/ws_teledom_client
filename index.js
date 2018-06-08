@@ -34,4 +34,27 @@ function config(){
 	};
 	ws.emit('config', data);
 }
+function key_open(){
+	var data = {
+		event: 'key_open',
+		key_number: '70565AD129BA'
+	};
+	ws.emit('key_open', data);
+}
+function getcode(){
+	var data = {
+		event: 'mobile_getcode',
+		phone: '79046153341'
+	};
+	ws.emit('mobile_getcode', data);
+}
+function checkcode(){
+	var code = document.getElementById('code').value;
+	var data = {
+		event: 'mobile_checkcode',
+		phone: '79046153341',
+		code: code
+	};
+	ws.emit('mobile_checkcode', data);
+}
 
