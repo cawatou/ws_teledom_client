@@ -70,7 +70,7 @@ function pass(){
 	ws.emit('mobile_pass', data);
 }
 
-function open(){
+function opendoor(){
 	ws.emit('mobile_opendoor', data);
 }
 
