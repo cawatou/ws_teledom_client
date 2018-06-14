@@ -3,22 +3,20 @@ var data;
 
 function init() {
     data = {serial_number: '84005035c504382e09ce'};
-    ws.emit('init', data, (res) => console.log(res));
+    ws.emit('init', data, (res) => console.log(res) );
 }
 
 function config() {
-    data = {
-        token: 'Gs1codN2NLFFxQMF-lD_yNU-rfkI70XH',
-        sign: sign
-    };
-    ws.emit('config', data);
+    data = {token: 'Gs1codN2NLFFxQMF-lD_yNU-rfkI70XH'};
+    ws.emit('config', data, (res) => console.log(res) );
 }
 
 function key_open() {
     data = {
-        key_number: '70565AD129BA'
+        key_number: '70565AD129BA',
+        token: 'Gs1codN2NLFFxQMF-lD_yNU-rfkI70XH'
     };
-    ws.emit('key_open', data);
+    ws.emit('key_open', data, (res) => console.log(res) );
 }
 
 function getcode() {
