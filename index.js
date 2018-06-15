@@ -3,26 +3,26 @@ var data;
 
 function init() {
     data = {serial_number: '84005035c504382e09ce'};
+    //data = null;
+    //data = undefined;
     ws.emit('init', data, (res) => console.log(res) );
 }
 
 function config() {
-    data = {token: 'Gs1codN2NLFFxQMF-lD_yNU-rfkI70XH'};
+    data = {token: 'StuxeNCJueXaSg16eeqPWyq3rx-GXVJK'};
     ws.emit('config', data, (res) => console.log(res) );
 }
 
 function key_open() {
     data = {
-        key_number: '70565AD129BA',
+        key_number: '70565AD129BA', // Шифровать
         token: 'Gs1codN2NLFFxQMF-lD_yNU-rfkI70XH'
     };
     ws.emit('key_open', data, (res) => console.log(res) );
 }
 
 function getcode() {
-    data = {
-        phone: '79046153341'
-    };
+    data = {phone: '79046153341'};
     ws.emit('mobile_getcode', data);
 }
 
@@ -89,3 +89,5 @@ var encryptedBytes = aesOfb.encrypt(textBytes);
 // To print or store the binary data, you may convert it to hex
 var sign = aesjs.utils.hex.fromBytes(encryptedBytes);
 console.log(sign);*/
+
+
