@@ -9,7 +9,7 @@ function init() {
 }
 
 function config() {
-    data = {token: 'StuxeNCJueXaSg16eeqPWyq3rx-GXVJK'};
+    data = {token: 'KnfzLAutMsIIikC2dBWI6PEWWkEfuxE6'};
     ws.emit('config', data, (res) => console.log(res) );
 }
 
