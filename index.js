@@ -1,5 +1,10 @@
-var ws = io.connect('http://185.22.235.182:8111');
+var ws = io.connect('https://domofons.com:8111');
+//var ws = io.connect('https://skipodev.ru:9443');
 var data;
+
+ws.on("mobile_opendoor", function (data) {
+    console.log(data);
+})
 
 function init() {
     data = {serial_number: '84005035c504382e09ce'};
@@ -9,7 +14,7 @@ function init() {
 }
 
 function config() {
-    data = {token: 'KnfzLAutMsIIikC2dBWI6PEWWkEfuxE6'};
+    data = {token: 'KDSgaHPXxkLrR_TveM9xVxCb743SH7rt'};
     ws.emit('config', data, (res) => console.log(res) );
 }
 
