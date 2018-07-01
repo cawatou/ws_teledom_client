@@ -1,5 +1,4 @@
 var ws = io.connect('https://domofons.com:8111');
-//var ws = io.connect('https://skipodev.ru:9443');
 var data;
 
 ws.on("mobile_opendoor", function (data) {
