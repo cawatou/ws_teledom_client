@@ -71,6 +71,19 @@ function opendoor() {
     ws.emit('mobile_opendoor', data);
 }
 
+function video() {
+    data = {token: 'zhWtg6trnEWf-XSA_mMX4tTD8hnmlXcp'};
+    ws.emit('video', data, (res) => {
+        localStorage.setItem('socket_id', res.socket_id);
+        localStorage.setItem('client_id', res.client_id);
+        start(true);
+        console.log(res);
+    } );
+}
+
+
+
+
 /*
 //var code = document.getElementById('code').value;
 var code = '188065';

@@ -2,6 +2,27 @@ var u, b, v, r, t, l, isClient;
 var url = 'https://domofons.com:8111';
 
 
+function video() {
+    data = {token: 'zhWtg6trnEWf-XSA_mMX4tTD8hnmlXcp'};
+    socketio.emit('video', data, (res) => {
+        localStorage.setItem('socket_id', res.socket_id);
+        localStorage.setItem('client_id', res.client_id);
+        start(true);
+        console.log(res);
+    } );
+}
+
+
+function video2() {
+    data = {token: 'dOj-P0Uuh1xjjljRmkfryn5RGlMSrcJU'};
+    socketio.emit('video', data, (res) => {
+        localStorage.setItem('socket_id', res.socket_id);
+        localStorage.setItem('client_id', res.client_id);
+        start(true);
+        console.log(res);
+    } );
+}
+
 
 var pageReady = () => {
     u = createUUID();
@@ -58,10 +79,6 @@ var pageReady = () => {
 var newPeer = () => {
     var peerConnectionConfig = {
         iceServers: [
-            {urls: 'stun:stun.l.google.com:19302'},
-            {urls: 'stun:stunserver.org:3478'},
-            {urls: 'stun:stun4.l.google.com:19302'},
-            {urls: 'stun:stun1.l.google.com:19302'},
             {urls: 'turn:skipodev.ru:3478', 'credential': 'teledom', 'username': 'teledom'}
         ]
     };
@@ -71,7 +88,7 @@ var newPeer = () => {
     pc.ondatachannel = e => e.channel.onclose = stop;
     pc.ontrack = e => (r.srcObject = e.streams[0]);
     pc.oniceconnectionstatechange = e => log(pc.iceConnectionState);
-    pc.onicecandidate = e => e.candidate && socketio.emit("candidate", {ice: e.candidate, uuid: u});
+    if(localStorage.getItem('client_id')) pc.onicecandidate = e => e.candidate && socketio.emit("candidate", {ice: e.candidate, uuid: u, client_id: localStorage.getItem('client_id')});
 
     console.log('peerConnection: ', pc);
 
@@ -91,10 +108,9 @@ var start = e => {
     if (b.value.indexOf("Start Call") != -1) {
         b.value = "Hangup";
     } else {
-        socketio.emit("hangup", {uuid: u});
+        socketio.emit("hangup", {uuid: u, socket_id: localStorage.getItem('socket_id')});
         stop();
         return;
-        ;
     }
 
     pc = newPeer();
@@ -108,10 +124,11 @@ var start = e => {
         pc.createDataChannel("close").onclose = stop;
         pc.createOffer(offer_const).then(offer => {
             console.log('offer: ', offer);
+            console.log('socket_id: ', localStorage.getItem('socket_id'));
             offer.sdp = BandwidthHandler.setBandwidth(offer.sdp, 50, 256);
             //offer.sdp = BandwidthHandler.setVideoBitrates(offer.sdp, { min: 128, max: 128 });
             pc.setLocalDescription(offer).then(() => {
-                socketio.emit("offer", {sdp: pc.localDescription, uuid: u});
+                socketio.emit("offer", {sdp: pc.localDescription, uuid: u, socket_id: localStorage.getItem('socket_id')});
             }).catch(log);
         }).catch(log);
     }
@@ -132,13 +149,15 @@ var socketio = io(url);
 
 var sdpHandler = msg => pc.setRemoteDescription(new RTCSessionDescription(msg.sdp)).then(() => {
     console.log('sdpHandler msg: ', msg);
+    localStorage.setItem('client_id', msg.client_id);
     if (msg.sdp.type == "offer") {
         pc.createAnswer().then(answer => {
             answer.sdp = BandwidthHandler.setBandwidth(answer.sdp, 50, 256);
             //answer.sdp = BandwidthHandler.setVideoBitrates(answer.sdp, { min: 128, max: 128 });
             pc.setLocalDescription(answer).then(() => {
                 console.log('pc.setLocalDescription(answer): ', answer);
-                socketio.emit("answer", {sdp: pc.localDescription, uuid: u})
+                console.log('client_id: ', localStorage.getItem('client_id'));
+                socketio.emit("answer", {sdp: pc.localDescription, uuid: u, client_id: localStorage.getItem('client_id')})
             }).catch(log);
         }).catch(log);
     }
