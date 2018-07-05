@@ -4,7 +4,7 @@ var url = 'https://domofons.com:8111';
 
 function video() {
     data = {token: 'zhWtg6trnEWf-XSA_mMX4tTD8hnmlXcp'};
-    socketio.emit('video', data, (res) => {
+    socketio.emit('video_init', data, (res) => {
         localStorage.setItem('socket_id', res.socket_id);
         localStorage.setItem('client_id', res.client_id);
         start(true);
@@ -15,7 +15,7 @@ function video() {
 
 function video2() {
     data = {token: 'dOj-P0Uuh1xjjljRmkfryn5RGlMSrcJU'};
-    socketio.emit('video', data, (res) => {
+    socketio.emit('video_init', data, (res) => {
         localStorage.setItem('socket_id', res.socket_id);
         localStorage.setItem('client_id', res.client_id);
         start(true);
