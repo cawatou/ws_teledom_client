@@ -1,9 +1,9 @@
 var u, b, v, r, t, l, isClient;
-var url = 'https://domofons.com:8111';
+var url = 'https://domofons.com:8112';
 
 
 function video() {
-    data = {token: 'zhWtg6trnEWf-XSA_mMX4tTD8hnmlXcp'};
+    data = {token: 'xRT9Z1nlyfcj6uXFAAAX'};
     socketio.emit('video_init', data, (res) => {
         localStorage.setItem('socket_id', res.socket_id);
         localStorage.setItem('client_id', res.client_id);

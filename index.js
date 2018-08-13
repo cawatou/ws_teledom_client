@@ -73,12 +73,12 @@ function opendoor() {
 
 function video() {
     data = {token: 'zhWtg6trnEWf-XSA_mMX4tTD8hnmlXcp'};
-    ws.emit('video', data, (res) => {
+    ws.emit('video_init', data, (res) => {
         localStorage.setItem('socket_id', res.socket_id);
         localStorage.setItem('client_id', res.client_id);
         start(true);
         console.log(res);
-    } );
+    });
 }
 
 function v_file() {
