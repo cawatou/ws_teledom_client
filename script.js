@@ -1,6 +1,7 @@
 var u, b, v, r, t, l, isClient;
 var url = 'https://domofons.com:8112';
 
+pageReady();
 
 function video() {
     data = {token: 'xRT9Z1nlyfcj6uXFAAAX'};

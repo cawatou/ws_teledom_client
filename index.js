@@ -71,22 +71,13 @@ function opendoor() {
     ws.emit('mobile_opendoor', data);
 }
 
-function video() {
-    data = {token: 'zhWtg6trnEWf-XSA_mMX4tTD8hnmlXcp'};
-    ws.emit('video_init', data, (res) => {
-        localStorage.setItem('socket_id', res.socket_id);
-        localStorage.setItem('client_id', res.client_id);
-        start(true);
-        console.log(res);
-    });
-}
-
 function v_file() {
     data = '54007867082024240b0e_1530771111111.mp4';
     ws.emit('video_file', data, (res) => console.log(res) );
 }
 
 function c_file() {
+    console.log('ssss');
     data = '5400786708202c3b054e_1532170111111_0051.jpeg';
     ws.emit('call_file', data, (res) => console.log(res) );
 }
