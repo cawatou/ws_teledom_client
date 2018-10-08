@@ -168,7 +168,6 @@ socketio.on("offer", msg => (pc || start(false), sdpHandler(msg)));
 socketio.on("answer", msg => sdpHandler(msg));
 socketio.on("candidate", msg => msg.ice && pc.addIceCandidate(new RTCIceCandidate(msg.ice)).catch(log));
 socketio.on("hangup", msg => stop());
-socketio.on("accept");
 socketio.on("microphone", msg => muteAu(msg.mute));
 socketio.on("video", msg => muteVi(msg.mute));
 

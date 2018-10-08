@@ -1,28 +1,36 @@
-var ws = io.connect('https://domofons.com:8111');
+var ws = io.connect('https://domofons.com:8112');
 var data;
 
 ws.on("mobile_opendoor", function (data) {
     console.log(data);
 })
-
+for(let i=1; i <= 100; i++){
+    //console.log(i);
+    //ws = io.connect('https://domofons.com:8112');
+}
 function init() {
-    data = {serial_number: '84005035c504382e09ce'};
+    data = {serial_number: '5400786708200c22098e'};
     //data = null;
     //data = undefined;
     ws.emit('init', data, (res) => console.log(res) );
 }
 
 function config() {
-    data = {token: 'KDSgaHPXxkLrR_TveM9xVxCb743SH7rt'};
+    data = {
+        token: 'QOgWr0OhmM9riDv9AAAA',
+        pub_ip: 'test',
+        loc_ip: 'test',
+        mod_ip: 'test'
+    };
     ws.emit('config', data, (res) => console.log(res) );
 }
 
 function key_open() {
     data = {
-        key_number: '70565AD129BA', // Шифровать
-        token: 'Gs1codN2NLFFxQMF-lD_yNU-rfkI70XH'
+        key_number: 'tttteeesst', // Шифровать
+        token: 'QOgWr0OhmM9riDv9AAAA'
     };
-    ws.emit('key_open', data, (res) => console.log(res) );
+    ws.emit('domofon_key_open', data, (res) => console.log(res) );
 }
 
 function getcode() {
