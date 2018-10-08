@@ -85,12 +85,24 @@ function v_file() {
 }
 
 function c_file() {
-    console.log('ssss');
     data = '5400786708202c3b054e_1532170111111_0051.jpeg';
     ws.emit('call_file', data, (res) => console.log(res) );
 }
 
+function write_key() {
+    console.log('write_key');
+    data = {
+        time: 60
+    };
+    ws.emit('domofon_key_write', data, (res) => console.log(res) );
 
+
+    data = {
+        socket_id: 'jsOrIxBEiZQ4L0IDADT5',
+        number: 'WRITEKEY'
+    };
+    ws.emit('domofon_key_add', data);
+}
 
 
 /*
