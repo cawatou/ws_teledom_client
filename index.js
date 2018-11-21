@@ -85,9 +85,16 @@ function v_file() {
 }
 
 function c_file() {
-    console.log('ssss');
-    data = '5400786708202c3b054e_1532170111111_0051.jpeg';
+    data = '5400786708202c3b054e_1532170111111_test.jpeg';
     ws.emit('call_file', data, (res) => console.log(res) );
+}
+
+function key_file() {
+    data = {
+        storage : "remote",
+        filename: '5400786708202c3b054e_1542809400_TEST.jpeg'
+    };
+    ws.emit('domofon_key_file', data, (res) => console.log(res) );
 }
 
 
