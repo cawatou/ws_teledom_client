@@ -9,7 +9,7 @@ for(let i=1; i <= 100; i++){
     //ws = io.connect('https://domofons.com:8112');
 }
 function init() {
-    data = {serial_number: '5400786708200c22098e'};
+    data = {serial_number: '84005035c5043423054e'};
     //data = null;
     //data = undefined;
     ws.emit('init', data, (res) => console.log(res) );
@@ -98,7 +98,7 @@ function key_file() {
 }
 
 
-
+ws.on('site_key_add', (res) => console.log(res) );
 
 /*
 //var code = document.getElementById('code').value;
