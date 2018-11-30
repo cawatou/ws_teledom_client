@@ -1,4 +1,5 @@
-var ws = io.connect('https://domofons.com:8112');
+var ws = io.connect('https://domofons.com:8113');
+
 var data;
 
 ws.on("mobile_opendoor", function (data) {
@@ -27,8 +28,9 @@ function config() {
 
 function key_open() {
     data = {
-        key_number: 'tttteeesst', // Шифровать
-        token: 'QOgWr0OhmM9riDv9AAAA'
+        key_number: '00008932E949',
+        //key_number: '0000B9C62BB8',
+        token: 'tbLD1gHD1ETmMQ_pAAAO'
     };
     ws.emit('domofon_key_open', data, (res) => console.log(res) );
 }
