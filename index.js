@@ -18,10 +18,10 @@ function init() {
 
 function config() {
     data = {
-        token: 'QOgWr0OhmM9riDv9AAAA',
-        pub_ip: 'test',
-        loc_ip: 'test',
-        mod_ip: 'test'
+        token: 'eESlg_EINr0jZ01GAABY',
+        pub_ip: '185.22.204.74', // ip_ext
+        loc_ip: '192.168.88.252', // top
+        mod_ip: '192.168.88.137' // down
     };
     ws.emit('config', data, (res) => console.log(res) );
 }
