@@ -1,4 +1,4 @@
-var ws = io.connect('https://domofons.com:8113');
+var ws = io.connect('https://domofons.com:8111');
 
 var data;
 
@@ -100,7 +100,10 @@ function key_file() {
 }
 
 
-ws.on('site_key_add', (res) => console.log(res) );
+ws.on('site_key_add', (data, cb) => {
+    console.log(data);
+    cb('done');
+});
 
 /*
 //var code = document.getElementById('code').value;
